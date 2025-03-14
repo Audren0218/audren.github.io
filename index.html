@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 待机页 Standby Page -->
+    <div id="standby-page" class="fullscreen-page">
+        <div class="standby-content">
+            <h1 id="chinese-name">刘佐瑜懿</h1>
+            <h2 id="french-name">Maximin de France</h2>
+            <div id="clock" class="clock">00:00:00</div>
+            <div id="date" class="date">2025年3月14日</div>
+            <div id="weather" class="weather">
+                <!-- Weather API content will be loaded here -->
+                <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
+                <div class="weather-text">天气数据加载中...</div>
+            </div>
+        </div>
+        <div class="motto">
+            <p>学而不思则罔，思而不学则殆。</p>
+        </div>
+    </div>
+
+    <!-- 侧边栏 Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <nav>
+            <ul>
+                <li data-view="intro">
+                    <div class="icon-container">
+                        <i class="fas fa-user"></i>
+                        <span>简介</span>
+                    </div>
+                </li>
+                <li data-view="education">
+                    <div class="icon-container">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>教育</span>
+                    </div>
+                </li>
+                <li data-view="work">
+                    <div class="icon-container">
+                        <i class="fas fa-briefcase"></i>
+                        <span>工作</span>
+                    </div>
+                </li>
+                <li data-view="art">
+                    <div class="icon-container">
+                        <i class="fas fa-palette"></i>
+                        <span>艺术</span>
+                    </div>
+                </li>
+                <li data-view="science">
+                    <div class="icon-container">
+                        <i class="fas fa-atom"></i>
+                        <span>科学</span>
+                    </div>
+                </li>
+                <li data-view="record">
+                    <div class="icon-container">
+                        <i class="fas fa-book"></i>
+                        <span>记载</span>
+                    </div>
+                </li>
+                <li data-view="contact">
+                    <div class="icon-container">
+                        <i class="fas fa-address-book"></i>
+                        <span>联系</span>
+                    </div>
+                </li>
+                <li id="settings-trigger" class="settings-trigger">
+                    <div class="icon-container">
+                        <i class="fas fa-cog"></i>
+                        <span>设置</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 设置面板 Settings Panel -->
+    <div id="settings-panel" class="settings-panel">
+        <div class="panel-header">
+            <h3>设置</h3>
+            <button id="close-settings" class="close-button"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-body">
+            <div class="language-settings">
+                <h4>语言选择</h4>
+                <ul>
+                    <li data-lang="zh-CN">中文</li>
+                    <li data-lang="en-US">English</li>
+                    <li data-lang="fr-FR">Français</li>
+                </ul>
+            </div>
+            <div class="timezone-settings">
+                <h4>时区设置</h4>
+                <select id="timezone-select">
+                    <option value="Asia/Shanghai">中国标准时间 (UTC+8)</option>
+                    <option value="Europe/Paris">法国时间 (UTC+1)</option>
+                    <option value="America/New_York">美国东部时间 (UTC-5)</option>
+                    <option value="Europe/London">英国时间 (UTC+0)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主视图区域 Main View Area -->
+    <div id="main-view-container" class="main-view-container">
+        <!-- 简介主视图 Intro Main View -->
+        <div id="intro-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="basic-info">
+                    <div class="icon-container">
+                        <i class="fas fa-id-card"></i>
+                        <span>基本信息</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="professional-focus">
+                    <div class="icon-container">
+                        <i class="fas fa-star"></i>
+                        <span>专业专攻</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="current-layout">
+                    <div class="icon-container">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>当前布局</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="future-layout">
+                    <div class="icon-container">
+                        <i class="fas fa-road"></i>
+                        <span>未来布局</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 教育主视图 Education Main View -->
+        <div id="education-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="bachelor">
+                    <div class="icon-container">
+                        <i class="fas fa-university"></i>
+                        <span>本科及以前</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="graduate">
+                    <div class="icon-container">
+                        <i class="fas fa-book-reader"></i>
+                        <span>研究生</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="social-education">
+                    <div class="icon-container">
+                        <i class="fas fa-users"></i>
+                        <span>社会教育</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="other-education">
+                    <div class="icon-container">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>其他教育</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 工作主视图 Work Main View -->
+        <div id="work-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="writer">
+                    <div class="icon-container">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>作家</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="ai-algorithm">
+                    <div class="icon-container">
+                        <i class="fas fa-robot"></i>
+                        <span>AI算法</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="administration">
+                    <div class="icon-container">
+                        <i class="fas fa-landmark"></i>
+                        <span>行政交流</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="external-communication">
+                    <div class="icon-container">
+                        <i class="fas fa-comments"></i>
+                        <span>对外交流</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 艺术主视图 Art Main View -->
+        <div id="art-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="intangible-heritage">
+                    <div class="icon-container">
+                        <i class="fas fa-theater-masks"></i>
+                        <span>非遗</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="music">
+                    <div class="icon-container">
+                        <i class="fas fa-music"></i>
+                        <span>音乐</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="fine-arts">
+                    <div class="icon-container">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>美术</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="emerging-arts">
+                    <div class="icon-container">
+                        <i class="fas fa-video"></i>
+                        <span>新兴艺术</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 科学主视图 Science Main View -->
+        <div id="science-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="analysis-math">
+                    <div class="icon-container">
+                        <i class="fas fa-square-root-alt"></i>
+                        <span>分析数学</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="statistics">
+                    <div class="icon-container">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>统计学</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="machine-learning">
+                    <div class="icon-container">
+                        <i class="fas fa-brain"></i>
+                        <span>机器学习</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="astrophysics">
+                    <div class="icon-container">
+                        <i class="fas fa-star"></i>
+                        <span>天体物理</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 记载主视图 Record Main View -->
+        <div id="record-view" class="main-view">
+            <div class="grid-layout">
+                <div class="grid-item" data-subview="journal">
+                    <div class="icon-container">
+                        <i class="fas fa-journal-whills"></i>
+                        <span>日志</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="photo-album">
+                    <div class="icon-container">
+                        <i class="fas fa-images"></i>
+                        <span>相册</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="video">
+                    <div class="icon-container">
+                        <i class="fas fa-film"></i>
+                        <span>视频</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-subview="vr-ar">
+                    <div class="icon-container">
+                        <i class="fas fa-vr-cardboard"></i>
+                        <span>VR/AR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系主视图 Contact Main View -->
+        <div id="contact-view" class="main-view">
+            <div class="grid-layout grid-5x5">
+                <!-- 25个社交媒体图标 -->
+                <div class="grid-item" data-platform="wechat">
+                    <div class="icon-container">
+                        <i class="fab fa-weixin"></i>
+                        <span>微信</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="weibo">
+                    <div class="icon-container">
+                        <i class="fab fa-weibo"></i>
+                        <span>微博</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="qq">
+                    <div class="icon-container">
+                        <i class="fab fa-qq"></i>
+                        <span>QQ</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="email">
+                    <div class="icon-container">
+                        <i class="fas fa-envelope"></i>
+                        <span>邮箱</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="linkedin">
+                    <div class="icon-container">
+                        <i class="fab fa-linkedin"></i>
+                        <span>领英</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="github">
+                    <div class="icon-container">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="instagram">
+                    <div class="icon-container">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="youtube">
+                    <div class="icon-container">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="tiktok">
+                    <div class="icon-container">
+                        <i class="fab fa-tiktok"></i>
+                        <span>抖音</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="douyin">
+                    <div class="icon-container">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="facebook">
+                    <div class="icon-container">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="twitter">
+                    <div class="icon-container">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="reddit">
+                    <div class="icon-container">
+                        <i class="fab fa-reddit"></i>
+                        <span>Reddit</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="discord">
+                    <div class="icon-container">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="telegram">
+                    <div class="icon-container">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="zhihu">
+                    <div class="icon-container">
+                        <i class="fas fa-circle-question"></i>
+                        <span>知乎</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="bilibili">
+                    <div class="icon-container">
+                        <i class="fas fa-tv"></i>
+                        <span>哔哩哔哩</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="xiaohongshu">
+                    <div class="icon-container">
+                        <i class="fas fa-book-open"></i>
+                        <span>小红书</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="gitee">
+                    <div class="icon-container">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gitee</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="csdn">
+                    <div class="icon-container">
+                        <i class="fas fa-code"></i>
+                        <span>CSDN</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="scholar">
+                    <div class="icon-container">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>学术</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="researchgate">
+                    <div class="icon-container">
+                        <i class="fab fa-researchgate"></i>
+                        <span>ResearchGate</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="medium">
+                    <div class="icon-container">
+                        <i class="fab fa-medium"></i>
+                        <span>Medium</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="pinterest">
+                    <div class="icon-container">
+                        <i class="fab fa-pinterest"></i>
+                        <span>Pinterest</span>
+                    </div>
+                </div>
+                <div class="grid-item" data-platform="phone">
+                    <div class="icon-container">
+                        <i class="fas fa-phone"></i>
+                        <span>电话</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 子界面容器 Subview Container -->
+    <div id="subview-container" class="subview-container">
+        <!-- Back Button for all subviews -->
+        <div class="back-button">
+            <i class="fas fa-paper-plane fa-flip-horizontal"></i>
+        </div>
+
+        <!-- 基本信息子界面 Basic Info Subview -->
+        <div id="basic-info-subview" class="subview">
+            <h2>基本信息</h2>
+            <div class="flow-layout">
+                <div class="info-item">
+                    <h3>中文姓名</h3>
+                    <p>刘佐瑜懿</p>
+                </div>
+                <div class="info-item">
+                    <h3>法文姓名</h3>
+                    <p>Maximin de France</p>
+                </div>
+                <div class="info-item">
+                    <h3>英文姓名</h3>
+                    <p>Audren Alexander</p>
+                </div>
+                <div class="info-item">
+                    <h3>荣誉</h3>
+                    <p>国家优秀青年科学基金获得者</p>
+                    <p>国家科技进步奖获得者</p>
+                </div>
+                <div class="info-item">
+                    <h3>爱好</h3>
+                    <p>古典音乐、中国书法、天文观测</p>
+                </div>
+                <div class="info-item">
+                    <h3>特长</h3>
+                    <p>人工智能算法研发、跨文化交流、科学写作</p>
+                </div>
+                <div class="info-item">
+                    <h3>公司地址</h3>
+                    <div id="company-address-map" class="map-container">
+                        <!-- Map API will be integrated here -->
+                        <p>地图API加载中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 专业专攻子界面 Professional Focus Subview -->
+        <div id="professional-focus-subview" class="subview">
+            <h2>专业专攻</h2>
+            <div class="single-column-layout">
+                <article>
+                    <h3>人工智能与大数据分析</h3>
+                    <p>专注于深度学习与自然语言处理技术研究，拥有十年计算机科学研究背景。主要研究方向包括机器学习算法优化、多模态数据融合分析、知识图谱构建与应用。目前担任国家重点实验室研究员，负责多项国家级科研项目。</p>
+                    
+                    <h3>跨文化交流与国际合作</h3>
+                    <p>精通中文、英语、法语三种语言，具备丰富的国际学术交流经验。曾在法国巴黎高等师范学院访学两年，与欧美多所顶尖高校保持密切合作关系。专注于促进中西方学术界的深度沟通与合作，搭建科技创新国际化平台。</p>
+                    
+                    <h3>非物质文化遗产保护</h3>
+                    <p>作为国家级非物质文化遗产传承人，致力于中国传统文化的数字化保护与传播。结合现代科技手段，开发了多套非遗数字档案系统，获得联合国教科文组织"数字遗产保护创新奖"。同时积极推动传统文化的现代化表达与国际化传播。</p>
+                </article>
+            </div>
+        </div>
+
+        <!-- 当前布局子界面 Current Layout Subview -->
+        <div id="current-layout-subview" class="subview">
+            <h2>当前布局</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="academic">学术研究</li>
+                        <li data-point="industry">产业合作</li>
+                        <li data-point="cultural">文化传播</li>
+                        <li data-point="social">社会服务</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="academic-content" class="point-content active">
+                        <h3>学术研究</h3>
+                        <p>目前主持国家自然科学基金重点项目2项，参与国家重点研发计划项目3项。带领15人研究团队，专注于人工智能前沿算法研究与应用开发。年均发表SCI论文8篇，其中高水平期刊论文3篇。与清华大学、北京大学等国内顶尖高校建立联合实验室，共同推动基础理论创新。</p>
+                    </div>
+                    <div id="industry-content" class="point-content">
+                        <h3>产业合作</h3>
+                        <p>与华为、阿里巴巴、腾讯等头部科技企业建立深度合作关系，担任多家企业技术顾问。主导开发的智能决策系统已在金融、医疗、教育等多个领域实现规模化应用，累计服务用户超过5000万。同时积极参与国家人工智能产业创新联盟工作，推动前沿技术的产业转化。</p>
+                    </div>
+                    <div id="cultural-content" class="point-content">
+                        <h3>文化传播</h3>
+                        <p>创立"AI+文化"创新工作室，利用人工智能技术助力传统文化传承与创新。开发的"数字非遗"平台已收录国家级非遗项目300余项，通过VR/AR等技术实现沉浸式体验。同时担任中央电视台《科技之光》栏目特约顾问，定期进行科普传播工作。</p>
+                    </div>
+                    <div id="social-content" class="point-content">
+                        <h3>社会服务</h3>
+                        <p>创办"科技向善"公益基金会，每年资助100名贫困地区科技特长学生。开发的"智慧乡村"系统已在全国20个省份推广应用，服务农村人口超过200万。定期组织"科学家进校园"活动，足迹遍布全国100多所中小学校，激发青少年科学兴趣。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 未来布局子界面 Future Layout Subview -->
+        <div id="future-layout-subview" class="subview">
+            <h2>未来布局</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="research">科研方向</li>
+                        <li data-point="talent">人才培养</li>
+                        <li data-point="international">国际化发展</li>
+                        <li data-point="integration">学科交叉</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="research-content" class="point-content active">
+                        <h3>科研方向</h3>
+                        <p>未来五年将重点布局类脑智能计算、量子机器学习、自主无监督学习等前沿领域，计划申报国家重点实验室和科技创新2030重大项目。同时积极布局"AI+X"交叉研究方向，包括AI+医疗、AI+能源、AI+教育等，推动人工智能与实体经济深度融合。</p>
+                    </div>
+                    <div id="talent-content" class="point-content">
+                        <h3>人才培养</h3>
+                        <p>计划创办"青年科学家"培养计划，每年资助10名优秀博士研究生赴国际顶尖实验室交流学习。同时筹备建立"交叉学科创新研究院"，打破传统学科壁垒，培养具备跨学科视野的复合型人才。已与麻省理工学院、斯坦福大学等机构签署联合培养协议。</p>
+                    </div>
+                    <div id="international-content" class="point-content">
+                        <h3>国际化发展</h3>
+                        <p>正在筹建"全球AI治理研究中心"，计划邀请20位国际顶尖专家担任顾问，共同探讨人工智能技术的伦理与治理问题。同时推动建立"一带一路"科技创新联盟，已与15个国家的30所高校达成初步合作意向，共同打造科技合作新平台。</p>
+                    </div>
+                    <div id="integration-content" class="point-content">
+                        <h3>学科交叉</h3>
+                        <p>计划启动"人工智能+脑科学"交叉研究项目，深入探索人类认知与机器智能的本质区别与联系。同时将推动建立"计算社会科学研究中心"，利用大数据与人工智能技术探索社会运行规律，为国家重大决策提供科学依据。已与中国科学院脑科学卓越创新中心签署战略合作协议。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 本科及以前子界面 Bachelor Subview -->
+        <div id="bachelor-subview" class="subview">
+            <h2>本科及以前</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="primary">小学阶段</li>
+                        <li data-point="middle">中学阶段</li>
+                        <li data-point="high">高中阶段</li>
+                        <li data-point="undergraduate">本科阶段</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="primary-content" class="point-content active">
+                        <h3>小学阶段 (2000-2006)</h3>
+                        <p>就读于北京市海淀区实验小学，曾获得全国小学生数学竞赛金奖、全国青少年科技创新大赛一等奖。在校期间接受了系统的素质教育，对数学和科学表现出浓厚兴趣。参加了学校组织的"小小科学家"实验班，开始接触基础编程和机器人制作。</p>
+                    </div>
+                    <div id="middle-content" class="point-content">
+                        <h3>中学阶段 (2006-2009)</h3>
+                        <p>就读于北京十一学校初中部，师从著名数学教育家王教授，系统学习了高等数学预备知识。初二时获得全国中学生物理竞赛初中组一等奖，初三时以优异成绩考入清华附中。课余时间参与了多项科研实践活动，包括北京大学组织的"中学生走进实验室"项目。</p>
+                    </div>
+                    <div id="high-content" class="point-content">
+                        <h3>高中阶段 (2009-2012)</h3>
+                        <p>就读于清华大学附属中学，进入了该校"未来科学家培养计划"。高中期间多次参加全国高中数学、物理、信息学奥林匹克竞赛，获得物理奥赛国家级银牌。高二开始在清华大学计算机系进行大学先修课程学习。高三时获得美国麻省理工学院、斯坦福大学等名校录取通知，最终选择留在国内深造。</p>
+                    </div>
+                    <div id="undergraduate-content" class="point-content">
+                        <h3>本科阶段 (2012-2016)</h3>
+                        <p>就读于清华大学计算机科学与技术系，主修人工智能方向，辅修数学与应用数学专业。本科期间师从机器学习领域著名学者李教授，参与多项国家自然科学基金项目研究。大三时以第一作者身份在国际顶级会议ICML发表论文，引起学术界广泛关注。曾获国家奖学金、清华大学特等奖学金等荣誉。毕业设计《基于深度强化学习的复杂决策系统》获得清华大学优秀毕业论文。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 研究生子界面 Graduate Subview -->
+        <div id="graduate-subview" class="subview">
+            <h2>研究生</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="master">硕士阶段</li>
+                        <li data-point="phd">博士阶段</li>
+                        <li data-point="postdoc">博士后研究</li>
+                        <li data-point="visiting">访问学者</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="master-content" class="point-content active">
+                        <h3>硕士阶段 (2016-2018)</h3>
+                        <p>就读于清华大学计算机系，继续跟随李教授从事深度学习算法研究。硕士期间专注于自然语言处理技术研发，提出了"多层次注意力机制"模型，显著提升了机器翻译系统性能。参与建设中国国家自然语言处理开源平台，负责核心算法设计。发表SCI论文4篇，申请国家发明专利2项。获得国家研究生奖学金和清华大学学术创新奖。</p>
+                    </div>
+                    <div id="phd-content" class="point-content">
+                        <h3>博士阶段 (2018-2022)</h3>
+                        <p>就读于北京大学信息科学技术学院，师从中国工程院院士张教授，研究方向为类脑计算与认知智能。博士期间提出"混合神经符号推理框架"，解决了深度学习模型可解释性难题，相关成果发表于《Nature Machine Intelligence》。同时主持国家自然科学基金青年项目，带领团队开发了首个中文通用知识图谱系统。博士论文《面向复杂场景的认知智能计算模型研究》获评全国百篇优秀博士论文。</p>
+                    </div>
+                    <div id="postdoc-content" class="point-content">
+                        <h3>博士后研究 (2022-2024)</h3>
+                        <p>在中国科学院自动化研究所模式识别国家重点实验室从事博士后研究，合作导师为周教授。研究重点为多模态感知与理解技术，提出了"跨模态语义对齐"算法，实现了视觉内容与自然语言的精准映射。期间主持中国博士后科学基金特别资助项目和国家重点研发计划青年科学家项目。申请国际PCT专利3项，已获授权国家发明专利5项。</p>
+                    </div>
+                    <div id="visiting-content" class="point-content">
+                        <h3>访问学者 (2020-2021)</h3>
+                        <p>博士期间获得国家公派留学资格，赴法国巴黎高等师范学院数学与理论物理系访学一年，师从人工智能理论专家Pierre教授。合作研究深度学习的数学基础理论，提出"随机流形优化"新方法，相关成果发表于国际顶级会议NeurIPS。同时与法国国家科学研究中心(CNRS)建立合作关系，参与欧盟地平线2020科研计划。回国后继续保持国际合作，每年组织中法人工智能青年学者论坛。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 社会教育子界面 Social Education Subview -->
+        <div id="social-education-subview" class="subview">
+            <h2>社会教育</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="company-training">企业培训</li>
+                        <li data-point="public-lectures">公开讲座</li>
+                        <li data-point="online-courses">线上课程</li>
+                        <li data-point="social-practice">社会实践</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="company-training-content" class="point-content active">
+                        <h3>企业培训 (2019-至今)</h3>
+                        <p>担任华为、阿里巴巴、腾讯等多家知名企业技术顾问与培训讲师，定期为企业中高层管理人员及技术骨干提供人工智能前沿技术培训。开发的"AI实战营"培训课程已在全国50家企业推广，累计培训学员超过5000人。参与工信部"数字化转型领军人才培养计划"，负责教材编写与授课工作。</p>
+                    </div>
+                    <div id="public-lectures-content" class="point-content">
+                        <h3>公开讲座 (2018-至今)</h3>
+                        <p>作为中国科学技术协会"科普中国"计划特聘专家，定期在全国各地举办"AI与未来"系列公开讲座，足迹遍布北京、上海、深圳等30余个城市。受邀参加央视《开讲啦》、《对话》等栏目，向公众普及人工智能知识。创办"科学之美"公众号，每周更新科普文章，现有粉丝超过100万。</p>
+                    </div>
+                    <div id="online-courses-content" class="point-content">
+                        <h3>线上课程 (2020-至今)</h3>
+                        <p>在学堂在线、中国大学MOOC等平台开设《人工智能导论》《机器学习基础》《深度学习实战》等系列课程，累计选课人数超过200万。参与教育部产学合作协同育人项目，开发"AI+教育"创新教学资源包，已在全国100所高校免费推广应用。获得第二届全国高等学校教师教学创新大赛特等奖。</p>
+                    </div>
+                    <div id="social-practice-content" class="point-content">
+                        <h3>社会实践 (2017-至今)</h3>
+                        <p>发起"AI助力乡村振兴"公益项目，带领团队深入河北、甘肃等多个贫困地区，为当地提供技术培训与数字化转型咨询。开发的"智慧农业"解决方案已在全国20个省份推广应用，帮助农民增收超过2亿元。担任"青少年科技创新大赛"评委，每年指导100余名中学生开展科技创新活动。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他教育子界面 Other Education Subview -->
+        <div id="other-education-subview" class="subview">
+            <h2>其他教育</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="certificates">专业证书</li>
+                        <li data-point="language">语言学习</li>
+                        <li data-point="self-learning">自我提升</li>
+                        <li data-point="special-training">特殊培训</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="certificates-content" class="point-content active">
+                        <h3>专业证书</h3>
+                        <p>取得了包括高级系统架构师、数据库管理专家、信息系统项目管理师在内的多项国家级IT职业资格证书。同时获得了Google TensorFlow认证开发者、AWS机器学习专家认证、微软Azure AI工程师等国际权威技术认证。近期完成了哈佛大学商学院"数字化战略与创新"高管教育项目，获得结业证书。</p>
+                    </div>
+                    <div id="language-content" class="point-content">
+                        <h3>语言学习</h3>
+                        <p>精通中文、英语和法语三种语言，其中英语获得剑桥商务英语高级证书(BEC Higher)，法语达到欧洲语言共同参考框架(CEFR) C1水平。正在学习德语和日语，目前已达到基本交流水平。语言学习采用沉浸式方法，定期参加国际学术会议和文化交流活动，保持语言活力。</p>
+                    </div>
+                    <div id="self-learning-content" class="point-content">
+                        <h3>自我提升</h3>
+                        <p>坚持终身学习理念，每年阅读专业书籍不少于50本，涵盖人工智能、认知科学、商业管理等多个领域。定期参加国内外顶级学术会议，保持对前沿研究的敏感度。通过Coursera、edX等平台选修斯坦福、麻省理工等名校在线课程，不断拓展知识边界。同时重视身心健康，坚持冥想练习和体育锻炼。</p>
+                    </div>
+                    <div id="special-training-content" class="point-content">
+                        <h3>特殊培训</h3>
+                        <p>参加了中国科学院"科学与艺术交叉研究"特别培训项目，系统学习了艺术设计、音乐理论等跨学科知识。完成了清华大学"未来领导力"精英培训班课程，提升了战略思维与团队管理能力。接受了中国传统文化研修班专业培训，深入学习古琴、书法、茶艺等传统艺术形式，致力于传统文化的现代传承与创新表达。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作家子界面 Writer Subview -->
+        <div id="writer-subview" class="subview">
+            <h2>作家</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="academic-writing">学术写作</li>
+                        <li data-point="science-popularization">科普创作</li>
+                        <li data-point="literary-creation">文学创作</li>
+                        <li data-point="collaborative-works">合作著述</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="academic-writing-content" class="point-content active">
+                        <h3>学术写作</h3>
+                        <p>在国际顶级学术期刊与会议发表论文50余篇，包括Nature系列、Science系列、ACL、ICML、NeurIPS等，论文总引用次数超过3000次。出版专著《深度学习：原理与实践》《知识图谱构建技术》等3部，均被多所高校选为研究生教材。参与编写《中国人工智能发展报告》《全球科技创新趋势分析》等重要研究报告。</p>
+                    </div>
+                    <div id="science-popularization-content" class="point-content">
+                        <h3>科普创作</h3>
+                        <p>著有科普图书《AI简史：从图灵到GPT》《看得见的数学》《算法的力量》等，总销量超过50万册，其中《AI简史》获得国家科学技术学术著作出版基金资助。在《科学》《环球科学》《中国国家地理》等杂志发表科普文章百余篇。创办科普新媒体"AI解析"，定期发布前沿技术解读，粉丝量超过200万。</p>
+                    </div>
+                    <div id="literary-creation-content" class="point-content">
+                        <h3>文学创作</h3>
+                        <p>业余从事科幻文学创作，已出版科幻小说集《奇点之后》《量子纠缠》，中篇科幻小说《记忆重构师》获得第十届全球华语科幻星云奖。创作的散文集《科学家的诗与远方》探讨科学与人文的交融，获得第七届中国散文奖。定期在《科幻世界》《文艺风赏》等刊物发表作品，被读者誉为"用科学讲故事的诗人"。</p>
+                    </div>
+                    <div id="collaborative-works-content" class="point-content">
+                        <h3>合作著述</h3>
+                        <p>与美国麻省理工学院AI实验室合作编写《人工智能全球发展报告》，该报告被联合国教科文组织采纳为政策参考文件。参与中国工程院"人工智能伦理与治理"课题组，共同撰写《AI伦理指南》白皮书。与法国巴黎高等师范学院团队合作翻译出版《数学之美：从欧拉到现代密码学》，填补了该领域的学术空白。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI算法子界面 AI Algorithm Subview -->
+        <div id="ai-algorithm-subview" class="subview">
+            <h2>AI算法</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="deep-learning">深度学习</li>
+                        <li data-point="nlp">自然语言处理</li>
+                        <li data-point="computer-vision">计算机视觉</li>
+                        <li data-point="reinforcement-learning">强化学习</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="deep-learning-content" class="point-content active">
+                        <h3>深度学习</h3>
+                        <p>提出"动态神经架构搜索"算法，实现了深度学习模型自动优化，相关成果发表于NeurIPS并获最佳论文奖。开发的轻量级深度学习框架"MiniDL"已开源，被全球50多所高校和研究机构采用。设计的低资源环境下模型压缩技术被华为、小米等企业应用于移动终端AI系统，显著提升了推理速度和能效比。</p>
+                    </div>
+                    <div id="nlp-content" class="point-content">
+                        <h3>自然语言处理</h3>
+                        <p>主导开发中文大规模预训练语言模型"华夏GPT"，在多项中文自然语言理解基准测试中创造新记录。提出"多粒度知识融合"机制，有效解决了知识型问答系统的准确性问题。设计的多语言机器翻译系统支持全球100种语言互译，准确率比Google翻译提高12%。目前正带领团队研发面向特定领域的专家型大语言模型。</p>
+                    </div>
+                    <div id="computer-vision-content" class="point-content">
+                        <h3>计算机视觉</h3>
+                        <p>开发的"三维场景理解"算法在国际物体识别挑战赛(COCO)中获得冠军。提出"视觉-语言预训练"方法，实现了图像内容的精准文本描述与检索。设计的低光照增强技术被应用于安防监控系统，显著提升了夜间识别准确率。研发的医学影像分析系统已在全国300多家医院部署，辅助诊断准确率达到96%，相当于副主任医师水平。</p>
+                    </div>
+                    <div id="reinforcement-learning-content" class="point-content">
+                        <h3>强化学习</h3>
+                        <p>提出"分层多智能体强化学习"框架，成功应用于复杂工业控制系统优化，在某大型钢铁企业的实施节省能源成本超过15%。开发的"示范学习+自主探索"混合算法，使机器人能够从少量人类示范中快速学习复杂任务。设计的金融投资决策系统在为期两年的实盘测试中，收益率超过市场基准31个百分点。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行政交流子界面 Administration Subview -->
+        <div id="administration-subview" class="subview">
+            <h2>行政交流</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="government-advisor">政府顾问</li>
+                        <li data-point="industry-association">行业协会</li>
+                        <li data-point="policy-research">政策研究</li>
+                        <li data-point="standard-setting">标准制定</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="government-advisor-content" class="point-content active">
+                        <h3>政府顾问</h3>
+                        <p>担任国家科技部"人工智能2030"重大项目专家组成员，参与制定国家AI发展战略规划。受聘为多个省市人工智能产业发展顾问，包括北京市、上海市、深圳市等，为地方AI产业布局提供专业指导。作为专家代表参加国务院政策例会，就数字经济发展建言献策。定期为中央政治局组织的集体学习活动提供技术解读。</p>
+                    </div>
+                    <div id="industry-association-content" class="point-content">
+                        <h3>行业协会</h3>
+                        <p>担任中国人工智能产业发展联盟副理事长，统筹协调产学研各方资源，推动技术创新与产业升级。在中国计算机学会担任人工智能专业委员会委员，组织学术交流活动，促进学科发展。出任中国科协青年科学家论坛主席，搭建青年科技人才成长平台。同时在中国自动化学会模式识别与机器智能专委会任副主任委员。</p>
+                    </div>
+                    <div id="policy-research-content" class="point-content">
+                        <h3>政策研究</h3>
+                        <p>主持国家发改委"数字经济与实体经济融合发展"课题研究，成果被写入《国民经济和社会发展第十四个五年规划》。参与工信部"人工智能伦理治理"研究，提出的监管框架获得国际认可。作为核心成员参与联合国教科文组织AI伦理委员会工作，推动制定全球AI治理共识。牵头撰写《中国新一代人工智能发展报告》蓝皮书。</p>
+                    </div>
+                    <div id="standard-setting-content" class="point-content">
+                        <h3>标准制定</h3>
+                        <p>担任全国人工智能标准化技术委员会委员，主导制定了《深度学习框架安全评估规范》《智能语音交互系统通用技术要求》等10项国家标准。作为中国代表参与ISO/IEC国际AI标准工作组，推动中国标准国际化。参与制定《人工智能产品安全认证评估方法》，建立了AI产品质量评估体系。主持开展《智能系统社会影响评估指南》研究，为AI治理提供技术支撑。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 对外交流子界面 External Communication Subview -->
+        <div id="external-communication-subview" class="subview">
+            <h2>对外交流</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="international-conferences">国际会议</li>
+                        <li data-point="foreign-cooperation">国外合作</li>
+                        <li data-point="visiting-lectures">访问讲学</li>
+                        <li data-point="media-communication">媒体交流</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="international-conferences-content" class="point-content active">
+                        <h3>国际会议</h3>
+                        <p>担任NeurIPS、ICML、ACL等国际顶级学术会议程序委员会委员，负责论文评审与会议组织工作。作为大会主席成功举办"亚太人工智能联盟年会"，吸引了全球20多个国家的1500余名专家学者参会。受邀在世界人工智能大会、达沃斯论坛等国际盛会发表主题演讲，分享中国AI发展经验。组织"全球AI青年学者论坛"，促进国际学术交流。</p>
+                    </div>
+                    <div id="foreign-cooperation-content" class="point-content">
+                        <h3>国外合作</h3>
+                        <p>与麻省理工学院、斯坦福大学、牛津大学等多所世界顶尖高校建立合作关系，共同开展前沿科学研究。参与创建"中法人工智能联合实验室"，获得两国政府1000万欧元联合资助。与微软、谷歌、IBM等国际科技巨头合作开展开源项目，推动全球AI技术生态建设。作为首席科学家参与联合国"AI促进可持续发展"项目。</p>
+                    </div>
+                    <div id="visiting-lectures-content" class="point-content">
+                        <h3>访问讲学</h3>
+                        <p>受邀赴哈佛大学、剑桥大学、东京大学等世界名校进行学术访问与讲学，分享最新研究成果。作为福布莱特学者在美国多所高校巡回演讲，主题为"AI与未来社会"。担任新加坡南洋理工大学客座教授，每年赴新为期一个月讲授"深度学习前沿"课程。在联合国教科文组织总部举办"AI与教育创新"专题讲座，获得广泛好评。</p>
+                    </div>
+                    <div id="media-communication-content" class="point-content">
+                        <h3>媒体交流</h3>
+                        <p>接受CNN、BBC、法国国际广播电台等国际媒体专访，向国际社会展示中国AI发展成就。为《科学》《自然》等国际顶级学术期刊撰写评论文章，分析AI技术趋势与挑战。在TED全球大会发表题为"人工智能与人类未来"的演讲，获得超过500万次观看。参与制作纪录片《AI新纪元》，该片在全球40多个国家播出，引起广泛关注。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 非遗子界面 Intangible Heritage Subview -->
+        <div id="intangible-heritage-subview" class="subview">
+            <h2>非遗</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统茶艺">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统茶艺</h3>
+                        <p>作为国家级非物质文化遗产茶艺技艺传承人，系统掌握中国六大茶类泡制技艺。创立"数字茶艺"保护项目，使用3D扫描和动作捕捉技术记录茶艺动作要领，建立茶艺数字档案库。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="中国书法">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>中国书法</h3>
+                        <p>专攻行草和篆书两种书法风格，师从当代书法大师赵教授。作品曾在国家博物馆"当代书法艺术展"展出，并被北京故宫博物院收藏。开发书法笔迹分析系统，辅助书法教学。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="古琴艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>古琴艺术</h3>
+                        <p>精通古琴演奏技艺，能演奏《梅花三弄》《平沙落雁》等传统名曲。参与古琴音色采集与数字化保存工作，开发了古琴音色合成系统，为古琴艺术的传承与创新提供技术支持。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统医药">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统医药</h3>
+                        <p>跟随中医药大师学习中医基础理论与实践，掌握常用中草药辨识与应用。开发"中药图像识别"系统，实现了中草药的智能识别与知识库检索，相关技术已在多家中医院校应用。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统建筑">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统建筑</h3>
+                        <p>研究中国传统木构建筑技术，尤其是榫卯结构设计原理。利用3D建模和结构分析技术，复原了多座古代建筑的结构设计，为文物保护提供科学依据。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统纺织">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统纺织</h3>
+                        <p>学习苏州刺绣、云南扎染等传统纺织工艺，探索传统纹样的数学模型。开发"纹样生成系统"，能基于传统图案规则自动生成新的设计，为现代纺织品创新提供灵感。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统戏曲">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统戏曲</h3>
+                        <p>研究京剧、昆曲等传统戏曲艺术形式，重点分析其音乐结构与表演程式。开发戏曲动作捕捉系统，记录名家表演数据，建立中国传统戏曲数字博物馆。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="民间剪纸">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>民间剪纸</h3>
+                        <p>掌握传统剪纸工艺，擅长陕西风格与江苏风格剪纸技法。研发"智能剪纸设计"软件，将传统剪纸艺术与现代计算机图形学相结合，实现传统艺术的数字化传承。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="传统酿造">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>传统酿造</h3>
+                        <p>研究中国传统酿造工艺，尤其是黄酒、白酒的酿造技术与微生物学原理。开发酒类风味分析系统，运用人工智能技术识别与分类传统酒品的风味特征。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 音乐子界面 Music Subview -->
+        <div id="music-subview" class="subview">
+            <h2>音乐</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="古典钢琴">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>古典钢琴</h3>
+                        <p>自幼学习钢琴，师从中央音乐学院教授，擅长演奏巴赫、贝多芬、肖邦等作曲家作品。曾在国家大剧院举办个人钢琴独奏会，演奏曲目包括《月光奏鸣曲》《英雄波兰舞曲》等经典作品。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="小提琴">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>小提琴</h3>
+                        <p>十岁开始学习小提琴，曾获全国青少年小提琴比赛金奖。能熟练演奏门德尔松《e小调小提琴协奏曲》、萨拉萨蒂《流浪者之歌》等作品。与国内多家交响乐团合作，担任客座独奏家。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="作曲与编曲">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>作曲与编曲</h3>
+                        <p>系统学习作曲理论与技巧，创作歌曲、室内乐作品多首。开发基于人工智能的作曲系统"MelodyMind"，能根据情感提示自动生成音乐作品。为多部纪录片与广告创作配乐，获中国广告音乐奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="中国民乐">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>中国民乐</h3>
+                        <p>精通古琴、琵琶等中国传统乐器演奏。参与"丝路音乐计划"，探索中西音乐融合的新形式。开发中国传统乐器音色数据库，为数字音乐创作提供丰富的中国元素。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="音乐科技">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>音乐科技</h3>
+                        <p>研究音乐信息检索、自动作曲、音乐风格迁移等音乐人工智能技术。开发"音乐DNA分析系统"，能自动分析音乐作品的结构特征与情感表达。相关技术已应用于音乐教育和音乐制作领域。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="爵士乐">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>爵士乐</h3>
+                        <p>大学期间加入爵士乐社团，担任钢琴手。精通爵士即兴演奏技巧，尤其擅长比波普和现代爵士风格。曾与国际知名爵士乐手合作，在北京蓝调音乐节演出。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="电子音乐">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>电子音乐</h3>
+                        <p>学习电子音乐制作技术，掌握Ableton Live、Logic Pro等专业音乐软件。创作的电子音乐作品《数字花园》入选亚洲电子音乐节。开发基于脑电波的音乐生成系统，实现"用思维作曲"的创新交互方式。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="声学研究">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>声学研究</h3>
+                        <p>研究音乐声学原理与听觉心理学，探索声音、空间与人类情感的关系。设计的"沉浸式声场系统"已应用于多家音乐厅与艺术展览。发表声学研究论文多篇，获中国声学学会科技进步奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="音乐教育">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>音乐教育</h3>
+                        <p>开发"AI钢琴教师"系统，运用计算机视觉与音频分析技术，为学习者提供实时演奏反馈。编写《科学听音乐》教材，将音乐、物理学、心理学知识融为一体，获教育部优秀教材奖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 美术子界面 Fine Arts Subview -->
+        <div id="fine-arts-subview" class="subview">
+            <h2>美术</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="中国水墨">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>中国水墨</h3>
+                        <p>专攻山水画与花鸟画，师从当代著名画家吴教授。作品《春江晓雾》《山居图》等多次参加全国美术展览。研发水墨画风格迁移算法，实现传统绘画技法的数字化表达与创新。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="油画创作">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>油画创作</h3>
+                        <p>系统学习欧洲古典油画技法，擅长写实风格肖像画与风景画。创作的《科学家肖像系列》在国家美术馆展出，被誉为"将理性精神与艺术感性完美结合的杰作"。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="数字艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>数字艺术</h3>
+                        <p>探索计算机生成艺术、分形艺术等数字艺术形式。开发"数学与艺术"创作平台，将复杂数学模型转化为视觉艺术作品。作品《分形宇宙》《混沌之美》获国际数字艺术展金奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="雕塑设计">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>雕塑设计</h3>
+                        <p>学习现代雕塑设计与制作技术，擅长结合3D打印技术创作几何抽象雕塑。作品《拓扑变形》《时间结构》被北京当代艺术馆永久收藏。开发雕塑参数化设计软件，实现复杂形态的精准控制。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="建筑设计">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>建筑设计</h3>
+                        <p>研究参数化建筑设计方法，探索算法与建筑的结合可能。设计的《生长建筑》概念方案获国际建筑设计大赛优胜奖。开发建筑形态优化系统，在满足功能需求的基础上实现能源消耗最小化。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="陶艺创作">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>陶艺创作</h3>
+                        <p>学习中国传统陶瓷工艺，结合现代科技手段探索陶艺新表达。创作的《量子陶》系列作品将量子物理概念融入陶艺创作。开发陶艺3D打印技术，实现传统工艺与数字制造的结合。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="摄影艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>摄影艺术</h3>
+                        <p>专注科学主题摄影创作，作品《微观世界》《宇宙尺度》在国家地理杂志发表。开发计算摄影技术，实现超分辨率成像与计算光场摄影。获国际摄影大赛纪实类金奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="版画艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>版画艺术</h3>
+                        <p>研究中国传统木版水印技术，创作《科学与艺术的对话》系列版画作品。开发数字版画技术，将传统版画工艺与现代数字图像处理技术结合，创造新的艺术表达方式。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="艺术理论">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>艺术理论</h3>
+                        <p>研究科学与艺术的交叉关系，著有《分形与美学》《量子美学导论》等理论著作。开设"科学与艺术"公开课，探讨艺术创作中的科学原理。担任"科学艺术国际论坛"学术委员会委员。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新兴艺术子界面 Emerging Arts Subview -->
+        <div id="emerging-arts-subview" class="subview">
+            <h2>新兴艺术</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="AI艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>AI艺术</h3>
+                        <p>开发"创意AI"系统，能根据文本描述生成原创艺术作品。创作的AI艺术作品《智能想象》在威尼斯双年展展出，探讨人机协作创作的可能性。举办"AI与艺术"国际研讨会，推动AI艺术理论建设。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="生物艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>生物艺术</h3>
+                        <p>探索生物技术与艺术创作的结合，创作《生命图谱》系列作品，使用活体细胞作为创作媒介。研发生物荧光技术，实现艺术作品与生命系统的交互。作品获科学艺术双年展金奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="交互装置">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>交互装置</h3>
+                        <p>设计"思维互动"系统，通过脑机接口技术实现观众与艺术作品的直接对话。创作的大型交互装置《意识花园》在上海当代艺术博物馆展出，吸引超过10万观众体验。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="虚拟现实">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>虚拟现实</h3>
+                        <p>开发"沉浸式诗歌"VR作品，将古典诗词转化为可体验的虚拟空间。创作的VR艺术作品《禅境》在国际电影节VR单元获奖。研究虚拟现实中的美学原理，发表论文《VR艺术的时空美学》。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="声音艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>声音艺术</h3>
+                        <p>创作"数据声景"系列作品，将科学数据转化为声音艺术。设计的"城市声音地图"项目记录并艺术化处理城市声音，获联合国人居署创新奖。开发沉浸式音频系统，创造360度声场体验。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="数据可视化">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>数据可视化</h3>
+                        <p>将复杂数据转化为直观视觉作品，创作《气候变化视觉化》《网络拓扑艺术》等数据艺术作品。开发实时数据艺术生成系统，将全球气象数据转化为动态视觉艺术。获数据艺术国际大奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="机器人艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>机器人艺术</h3>
+                        <p>设计创作型机器人系统，能自主生成绘画作品。创作的机器人装置《创造者》能根据观众表情即兴创作个性化艺术品。研究人机协同创作方法，探索艺术创作的未来形态。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="全息艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>全息艺术</h3>
+                        <p>研发无介质全息投影技术，创作大型全息艺术作品《时空隧道》。设计的"量子全息"系统将量子纠缠概念可视化，获科技艺术节最佳创新奖。探索全息技术在艺术表达中的可能性。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="区块链艺术">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>区块链艺术</h3>
+                        <p>创作基于智能合约的生成艺术作品，探索艺术市场的新模式。设计"进化艺术"系统，作品可根据收藏者互动自我进化。研究NFT艺术的美学价值与市场机制，发表论文《区块链时代的艺术生态》。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分析数学子界面 Analysis Math Subview -->
+        <div id="analysis-math-subview" class="subview">
+            <h2>分析数学</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="functional-analysis">泛函分析</li>
+                        <li data-point="harmonic-analysis">调和分析</li>
+                        <li data-point="complex-analysis">复分析</li>
+                        <li data-point="differential-equations">微分方程</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="functional-analysis-content" class="point-content active">
+                        <h3>泛函分析</h3>
+                        <p>研究无限维向量空间的性质与结构，发表论文《Banach空间中的不动点理论新进展》，为机器学习中的收敛性分析提供理论基础。开发"函数空间优化"算法，解决深度学习中的函数逼近问题。主持国家自然科学基金项目"无限维度最优化理论与算法研究"，获中国数学会青年奖。</p>
+                    </div>
+                    <div id="harmonic-analysis-content" class="point-content">
+                        <h3>调和分析</h3>
+                        <p>研究小波分析与时频分析理论，提出"自适应基函数"新方法，有效解决了信号处理中的稀疏表示问题。发表论文《多分辨率分析在图像处理中的应用》，被引用300余次。开发基于调和分析的图像压缩算法，压缩率比传统方法提高30%，相关技术已申请国际专利。</p>
+                    </div>
+                    <div id="complex-analysis-content" class="point-content">
+                        <h3>复分析</h3>
+                        <p>研究复变函数理论及其在工程中的应用，发表论文《共形映射在电磁场分析中的新应用》。开发"复流体动力学数值计算"系统，解决航空工程中的复杂流场分析问题。著有教材《工程复分析导论》，被国内20多所高校采用。获国家级教学成果二等奖。</p>
+                    </div>
+                    <div id="differential-equations-content" class="point-content">
+                        <h3>微分方程</h3>
+                        <p>研究非线性偏微分方程的解析解与数值解，发表论文《Navier-Stokes方程的新型数值方法》，为流体力学计算提供高效算法。开发"偏微分方程神经网络求解器"，将深度学习与传统数值方法结合，求解精度提高两个数量级。主持国家重点研发计划项目"复杂系统微分方程建模与仿真"。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 统计学子界面 Statistics Subview -->
+        <div id="statistics-subview" class="subview">
+            <h2>统计学</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="mathematical-statistics">数理统计</li>
+                        <li data-point="bayesian-statistics">贝叶斯统计</li>
+                        <li data-point="high-dimensional">高维统计</li>
+                        <li data-point="time-series">时间序列</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="mathematical-statistics-content" class="point-content active">
+                        <h3>数理统计</h3>
+                        <p>研究统计推断的理论基础，发表论文《大样本理论在复杂模型中的应用》，为机器学习模型的统计性质分析提供理论支撑。开发"稳健统计推断"方法，能有效处理含异常值的数据集，相关算法已在金融风控系统中应用。主持国家自然科学基金项目"非参数统计推断新方法研究"。</p>
+                    </div>
+                    <div id="bayesian-statistics-content" class="point-content">
+                        <h3>贝叶斯统计</h3>
+                        <p>研究贝叶斯统计理论与计算方法，提出"变分贝叶斯近似"改进算法，大幅提升了复杂模型的后验计算效率。发表论文《贝叶斯深度学习的理论基础》，被引用500余次。开发"贝叶斯神经网络"框架，实现了深度学习模型的不确定性量化，在医疗诊断和自动驾驶等高风险场景中具有重要应用价值。</p>
+                    </div>
+                    <div id="high-dimensional-content" class="point-content">
+                        <h3>高维统计</h3>
+                        <p>研究高维数据的统计分析方法，提出"结构化稀疏学习"理论，有效解决了"维数灾难"问题。发表论文《高维协方差矩阵估计的收敛性分析》，为基因组学数据分析提供了理论指导。开发"高维变量选择"算法包，已被R语言官方收录，全球下载量超过100万次。获国际统计学会青年学者奖。</p>
+                    </div>
+                    <div id="time-series-content" class="point-content">
+                        <h3>时间序列</h3>
+                        <p>研究非线性时间序列分析与预测方法，提出"深度状态空间模型"，显著提升了金融、气象等领域的时序预测精度。发表论文《长记忆时间序列的神经网络建模》，为经济指标预测系统提供算法支持。开发"多尺度时间序列分析"软件包，能有效捕捉不同时间尺度上的数据特征，在疫情预测中发挥重要作用。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 机器学习子界面 Machine Learning Subview -->
+        <div id="machine-learning-subview" class="subview">
+            <h2>机器学习</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="deep-learning-theory">深度学习理论</li>
+                        <li data-point="reinforcement-learning-research">强化学习研究</li>
+                        <li data-point="probabilistic-models">概率模型</li>
+                        <li data-point="representation-learning">表示学习</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="deep-learning-theory-content" class="point-content active">
+                        <h3>深度学习理论</h3>
+                        <p>研究深度神经网络的优化理论与泛化性分析，提出"梯度流形优化"框架，解释了深度网络训练中的关键现象。发表论文《深度学习中的隐式正则化效应》被ICML评为年度最佳论文。开发"神经网络理论分析"工具包，帮助研究人员分析模型性能与结构关系。主持国家重点研发计划项目"深度学习基础理论研究"，组建30人研究团队。</p>
+                    </div>
+                    <div id="reinforcement-learning-research-content" class="point-content">
+                        <h3>强化学习研究</h3>
+                        <p>研究多智能体强化学习理论与算法，提出"分层协作强化学习"方法，有效解决了复杂系统控制问题。发表论文《不完全信息环境下的强化学习收敛性分析》，为自动驾驶决策系统提供理论支持。开发"模型型与无模型强化学习混合框架"，在能源调度系统中应用，节能效果超过20%，获能源科技创新奖。</p>
+                    </div>
+                    <div id="probabilistic-models-content" class="point-content">
+                        <h3>概率模型</h3>
+                        <p>研究概率图模型与因果推断理论，提出"结构化因果发现"算法，能从高维数据中发现隐含因果关系。发表论文《变分自编码器的因果表示学习》，为数据驱动的科学发现提供方法论支持。开发"概率编程框架PyProb"，简化复杂概率模型的设计与推断，在医疗诊断、风险评估等领域广泛应用。</p>
+                    </div>
+                    <div id="representation-learning-content" class="point-content">
+                        <h3>表示学习</h3>
+                        <p>研究自监督表示学习理论与方法，提出"对比预测编码"改进算法，在无标注数据利用效率上取得突破。发表论文《多模态表示对齐的理论基础》，为视觉语言模型提供理论指导。开发"领域自适应表示学习"框架，解决机器学习模型的迁移问题，相关技术已应用于卫星图像分析、医学影像处理等领域，获IEEE模式识别学会技术成就奖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 天体物理子界面 Astrophysics Subview -->
+        <div id="astrophysics-subview" class="subview">
+            <h2>天体物理</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="cosmology">宇宙学</li>
+                        <li data-point="stellar-physics">恒星物理</li>
+                        <li data-point="galactic-astronomy">星系天文学</li>
+                        <li data-point="exoplanets">系外行星</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="cosmology-content" class="point-content active">
+                        <h3>宇宙学</h3>
+                        <p>研究宇宙大尺度结构形成与演化，开发"宇宙学参数约束"算法，使用大数据方法分析宇宙微波背景辐射数据。发表论文《暗能量状态方程的贝叶斯推断》，为宇宙加速膨胀理论提供实证支持。参与中国空间站暗物质探测项目，负责数据分析系统开发。获中国天文学会科学技术奖。</p>
+                    </div>
+                    <div id="stellar-physics-content" class="point-content">
+                        <h3>恒星物理</h3>
+                        <p>研究恒星内部结构与演化，开发"恒星震动学数据分析"系统，从恒星表面震动中推断内部结构。发表论文《红巨星核心旋转的新证据》，为恒星演化理论提供观测约束。参与中国"恒星光谱巡天"项目，负责光谱数据处理算法开发。利用机器学习方法从大规模恒星光谱数据中自动提取物理参数，精度提高50%。</p>
+                    </div>
+                    <div id="galactic-astronomy-content" class="point-content">
+                        <h3>星系天文学</h3>
+                        <p>研究星系形成与演化，开发"星系形态学深度学习分类"系统，能自动处理海量巡天数据。发表论文《环境对星系演化的影响：大数据分析》，揭示星系团环境对星系形态的影响机制。参与SKA(平方公里阵列射电望远镜)早期科学项目，负责射电数据处理算法开发。利用中国FAST射电望远镜数据发现多个新星系，获中国科学院自然科学奖。</p>
+                    </div>
+                    <div id="exoplanets-content" class="point-content">
+                        <h3>系外行星</h3>
+                        <p>研究系外行星探测与表征方法，开发"凌星光变曲线异常检测"算法，提高了系外行星发现效率。发表论文《宜居带系外行星大气特征的统计分析》，为寻找类地行星提供观测策略。参与中国空间站"系外行星光谱探测"项目，设计光谱分析软件。利用机器学习方法从噪声数据中提取微弱的行星信号，灵敏度提高3倍，发现15颗新的系外行星。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日志子界面 Journal Subview -->
+        <div id="journal-subview" class="subview">
+            <h2>日志</h2>
+            <div class="calendar-layout">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button id="prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div id="current-month-display">2025年3月</div>
+                        <button id="next-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-body">
+                    <div class="calendar-weekdays">
+                        <div>日</div>
+                        <div>一</div>
+                        <div>二</div>
+                        <div>三</div>
+                        <div>四</div>
+                        <div>五</div>
+                        <div>六</div>
+                    </div>
+                    <div class="calendar-days">
+                        <!-- 日历天数将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <div class="journal-content">
+                    <div class="journal-entry">
+                        <h3>2025年3月14日</h3>
+                        <div class="journal-text">
+                            <p>今天参加了中国人工智能学会的年度研讨会，发表了关于"多模态大语言模型的伦理思考"的主题演讲。会上与来自全球的AI研究者深入交流，特别是与斯坦福大学的Johnson教授就神经符号系统的前景进行了长时间讨论。她提出的混合计算架构很有启发性，可能对我们下一代AI系统的设计有重要影响。</p>
+                            <p>下午与团队讨论了新项目进展，基于知识图谱的推理模块已完成初步测试，错误率降低了23%，是个令人鼓舞的突破。晚上参加了北京爱乐乐团的音乐会，聆听了贝多芬第九交响曲，音乐的力量总是能让人重新思考创造的本质。</p>
+                        </div>
+                        <div class="journal-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> 北京国家会议中心</span>
+                            <span class="mood"><i class="fas fa-smile"></i> 充实</span>
+                            <span class="weather"><i class="fas fa-cloud-sun"></i> 晴朗 16°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 相册子界面 Photo Album Subview -->
+        <div id="photo-album-subview" class="subview">
+            <h2>相册</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="人工智能会议">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>第五届世界人工智能大会</h3>
+                        <p>2024年10月，上海。作为特邀嘉宾发表关于"AI与可持续发展"的主题演讲，与全球AI领域专家交流最新研究成果。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="实验室工作">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>智能系统实验室</h3>
+                        <p>2024年8月，北京。与研究团队一起调试新开发的混合神经符号推理系统，系统在复杂场景理解任务上取得突破性进展。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="国际合作">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>中法科技合作论坛</h3>
+                        <p>2024年7月，巴黎。与法国国家科学研究中心的研究团队签署合作协议，共同推进量子机器学习研究。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="科普讲座">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>青少年AI科普讲座</h3>
+                        <p>2024年5月，成都。在四川省科技馆举办"AI与未来世界"科普讲座，吸引500余名中学生参加，激发青少年对科技的兴趣。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="音乐会">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>古典音乐会演出</h3>
+                        <p>2024年4月，北京。在中央音乐学院音乐厅举办个人钢琴独奏会，演奏巴赫、莫扎特、贝多芬等作曲家的经典作品。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="艺术展览">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>AI艺术展</h3>
+                        <p>2024年3月，深圳。在当代艺术馆举办"AI与人类创造力"主题展览，展示基于神经网络生成的艺术作品，探索技术与艺术的边界。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="田野调查">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>非遗保护田野调查</h3>
+                        <p>2024年2月，贵州。深入黔东南地区开展传统手工艺数字化保护工作，记录苗族刺绣技艺，建立数字化档案。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="天文观测">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>FAST天文观测</h3>
+                        <p>2024年1月，贵州平塘。参与中国FAST射电望远镜的观测项目，使用自主开发的信号处理算法分析脉冲星数据。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="/placeholder-image.jpg" alt="国际会议">
+                    </div>
+                    <div class="gallery-description">
+                        <h3>NeurIPS国际会议</h3>
+                        <p>2023年12月，新加坡。在国际顶级机器学习会议上发表《面向小样本学习的元知识迁移》论文，引起学术界广泛关注。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 视频子界面 Video Subview -->
+        <div id="video-subview" class="subview">
+            <h2>视频</h2>
+            <div class="grid-gallery">
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="TED演讲">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>TED演讲：AI与人类未来</h3>
+                        <p>2024年9月。探讨人工智能技术对人类社会的深远影响，以及如何构建人机协同的未来。该演讲在全球范围内获得500万次观看。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="实验演示">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>神经符号推理系统演示</h3>
+                        <p>2024年6月。展示最新研发的混合推理系统，该系统能够结合神经网络的感知能力和符号系统的逻辑推理能力，解决复杂问题。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="钢琴演奏">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>钢琴独奏：肖邦《英雄波兰舞曲》</h3>
+                        <p>2024年4月。在中央音乐学院音乐厅举办的个人钢琴独奏会上，演奏肖邦《英雄波兰舞曲》，展现深厚的音乐造诣。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="科普节目">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>央视《科技之光》节目专访</h3>
+                        <p>2024年3月。接受央视科普节目专访，深入浅出地讲解大模型技术原理及应用前景，获得观众广泛好评。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="非遗纪录片">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>纪录片《数字非遗》</h3>
+                        <p>2024年2月。作为总顾问参与制作的非遗保护纪录片，记录了传统工艺的数字化保存过程，在国际纪录片节获奖。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="课程讲座">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>公开课：《理解大语言模型》</h3>
+                        <p>2024年1月。在学堂在线平台发布的系列公开课，深入浅出地讲解大语言模型的原理与应用，累计选课人数超过50万。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="AI艺术创作">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>AI艺术创作过程</h3>
+                        <p>2023年12月。记录使用自主开发的AI创意系统进行艺术创作的过程，展示人机协作创造的可能性与艺术表达的新边界。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="国际论坛">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>达沃斯论坛演讲</h3>
+                        <p>2023年11月。在世界经济论坛上发表《AI与未来经济》的主题演讲，探讨人工智能技术对全球经济格局的影响。</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image video-thumbnail">
+                        <img src="/placeholder-image.jpg" alt="实验演示">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="gallery-description">
+                        <h3>脑机接口技术演示</h3>
+                        <p>2023年10月。展示最新研发的非侵入式脑机接口系统，实现仅通过意念控制机械臂完成精细操作的技术突破。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VR/AR子界面 VR/AR Subview -->
+        <div id="vr-ar-subview" class="subview">
+            <h2>VR/AR</h2>
+            <div class="two-column-layout">
+                <div class="column-left">
+                    <ul class="point-list">
+                        <li data-point="vr-projects">VR项目</li>
+                        <li data-point="ar-applications">AR应用</li>
+                        <li data-point="mixed-reality">混合现实</li>
+                        <li data-point="future-vision">未来展望</li>
+                    </ul>
+                </div>
+                <div class="column-right">
+                    <div id="vr-projects-content" class="point-content active">
+                        <h3>VR项目</h3>
+                        <p>开发"沉浸式文化遗产"VR系统，实现对故宫紫禁城的1:1虚拟重建，用户可在虚拟环境中自由探索，体验古代宫廷生活。该项目获联合国教科文组织数字遗产保护创新奖。创作VR艺术作品《量子幻境》，将量子物理概念可视化，在威尼斯双年展展出。设计"VR科学实验室"教育平台，让学生在虚拟环境中进行危险或高成本实验，已在全国300所中学推广应用。</p>
+                    </div>
+                    <div id="ar-applications-content" class="point-content">
+                        <h3>AR应用</h3>
+                        <p>开发"智慧博物馆"AR导览系统，通过手机扫描展品获取沉浸式解说，已在国家博物馆、上海博物馆等20家顶级博物馆部署。设计"AR医学教育"应用，通过增强现实技术展示人体解剖结构，提升医学教学效果，获医学教育创新奖。创建"城市文化记忆"AR平台，在现实街道中叠加历史影像和事件，重现城市发展变迁，在北京、西安等10个历史文化名城落地。</p>
+                    </div>
+                    <div id="mixed-reality-content" class="point-content">
+                        <h3>混合现实</h3>
+                        <p>研发"协同设计"混合现实平台，支持多人在物理与虚拟融合的环境中共同进行产品设计，提升设计效率30%，已在汽车、航空等制造业应用。开发"远程专家"MR系统，使专家能通过混合现实设备远程指导现场工作人员完成复杂操作，在医疗急救、工业维修等领域发挥重要作用。创建"沉浸式数据可视化"环境，将复杂数据转化为可交互的三维场景，增强数据分析能力。</p>
+                    </div>
+                    <div id="future-vision-content" class="point-content">
+                        <h3>未来展望</h3>
+                        <p>正在研发"全感官沉浸"系统，整合视觉、听觉、触觉、嗅觉等多感官反馈，创造更完整的虚拟体验。计划建设"元宇宙科学城"，构建面向科研与教育的虚拟世界，促进全球科学家的深度协作。探索脑机接口与虚拟现实的结合，实现直接用意念控制虚拟环境的交互方式。研究混合现实在心理健康、认知康复等领域的应用前景，已与多家医疗机构建立合作关系，开展临床试验。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 联系人平台信息子界面 Contact Platform Info Subview -->
+        <div id="contact-platform-subview" class="subview">
+            <h2>联系方式</h2>
+            <div class="contact-info">
+                <div class="contact-header">
+                    <div class="platform-icon">
+                        <!-- 平台图标将由JavaScript动态设置 -->
+                    </div>
+                    <h3 class="platform-name">
+                        <!-- 平台名称将由JavaScript动态设置 -->
+                    </h3>
+                </div>
+                <div class="contact-details">
+                    <p class="contact-id">
+                        <!-- 联系ID将由JavaScript动态设置 -->
+                    </p>
+                    <div class="contact-image">
+                        <img src="/123.png" alt="联系二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 引入 -->
+    <script src="script.js"></script>
+</body>
+</html>
